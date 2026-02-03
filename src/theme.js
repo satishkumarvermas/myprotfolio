@@ -1,21 +1,37 @@
 export const theme = {
   colors: {
-    primary: '#0A0A0A', // A very dark, near-black background
-    secondary: 'rgba(255, 255, 255, 0.05)', // The glass container background
-    accent: '#00F5FF', // A vibrant, glowing cyan for accents
-    text: '#F0F0F0', // A slightly off-white for main text
-    textSecondary: '#B3B3B3', // A dimmer white for subtitles and secondary text
+    primary: '#0D1117',
+    secondary: '#161B22',
+    accent: '#58A6FF',
+    secondaryAccent: '#1F6FEB',
+    text: '#C9D1D9',
+    textSecondary: '#8B949E',
+    gradient: 'linear-gradient(270deg, #0D1117, #161B22)',
   },
   fonts: {
-    main: "'Space Grotesk', sans-serif",
+    main: "'Poppins', sans-serif",
+    heading: "'Montserrat', sans-serif",
+  },
+  fontSizes: {
+    small: '0.875rem',
+    p: '1.125rem',
+    h3: '1.75rem',
+    h2: '2.25rem',
+    h1: '3.5rem',
   },
   styles: {
     glassEffect: `
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(22, 27, 34, 0.8);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 15px;
-    `
+    `,
+    boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+    flexCenter: `
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    `,
   }
 };

@@ -1,110 +1,181 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
+import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const HeroContainer = styled.section`
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   min-height: 100vh;
-  padding-top: 70px; // Offset for navbar
+  padding-top: 70px;
+  position: relative;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
+`;
+
+const Left = styled.div`
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 1;
+
+  @media (max-width: 768px) {
+    flex: 1;
+    align-items: center;
+  }
+`;
+
+const Right = styled.div`
+  flex: 3;
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    flex: 1;
+    width: 100%;
+    height: 300px; /* Give a fixed height for the canvas on mobile */
+  }
 `;
 
 const Title = styled(motion.h1)`
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 700;
   line-height: 1.1;
-  margin-bottom: 1.5rem;
-
-  span {
-    color: ${({ theme }) => theme.colors.accent};
-    text-shadow: 0 0 15px ${({ theme }) => theme.colors.accent};
-  }
 
   @media (max-width: 768px) {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 `;
 
-const Subtitle = styled(motion.h2)`
-  font-size: 1.75rem;
-  font-weight: 400;
-  color: ${({ theme }) => theme.colors.textSecondary};
-  margin-bottom: 2.5rem;
-`;
-
-const ButtonContainer = styled(motion.div)`
+const SubtitleContainer = styled.div`
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 0.75rem;
 `;
 
-const Button = styled.a`
+const Line = styled.div`
+  width: 2rem;
+  height: 3px;
+  background-color: ${({ theme }) => theme.colors.accent};
+`;
+
+const AnimatedSubtitle = styled(motion.h2)`
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.accent};
+`;
+
+const Description = styled(motion.p)`
+  font-size: 1.125rem;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  max-width: 500px;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+`;
+
+const PrimaryButton = styled(motion.a)`
   padding: 1rem 2rem;
-  border-radius: 8px;
+  border-radius: 50px;
   font-weight: 600;
   transition: all 0.3s;
   cursor: pointer;
-`;
-
-const PrimaryButton = styled(Button)`
   background: ${({ theme }) => theme.colors.accent};
   color: ${({ theme }) => theme.colors.primary};
   border: 1px solid ${({ theme }) => theme.colors.accent};
-  box-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+  box-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+  display: inline-block;
+  width: fit-content;
 
   &:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 0 30px rgba(88, 166, 255, 0.8);
+  }
+`;
+
+const SocialLinks = styled(motion.div)`
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+`;
+
+const SocialIcon = styled.a`
+  font-size: 1.5rem;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  transition: all 0.3s;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.accent};
     transform: translateY(-3px);
-    box-shadow: 0 0 30px rgba(0, 245, 255, 0.8);
   }
 `;
 
-const OutlineButton = styled(Button)`
-  background: transparent;
-  color: ${({ theme }) => theme.colors.accent};
-  border: 1px solid ${({ theme }) => theme.colors.accent};
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.accent};
-    color: ${({ theme }) => theme.colors.primary};
-  }
-`;
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.3 }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: 'easeOut' } }
-};
-
+const roles = ["Web Developer", "React Enthusiast", "UI/UX Designer", "Creative Coder"];
 
 function Hero({ id }) {
+  const [index, setIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % roles.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <HeroContainer id={id}>
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <Title variants={itemVariants}>
-          Hi, I'm <span>Satish Kumar Verma</span>
-        </Title>
-        <Subtitle variants={itemVariants}>
-          Frontend Developer | React
-        </Subtitle>
-        <ButtonContainer variants={itemVariants}>
-          <PrimaryButton href="#contact">Hire Me</PrimaryButton>
-          <OutlineButton href="/assets/SATISH_KR_VERMA_RESUME.pdf" download>
-            Download Resume
-          </OutlineButton>
-        </ButtonContainer>
-      </motion.div>
+      <Left>
+        <Title>Satish Kumar Verma</Title>
+        <SubtitleContainer>
+          <Line />
+          <AnimatePresence mode="wait">
+            <AnimatedSubtitle
+              key={roles[index]}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              {roles[index]}
+            </AnimatedSubtitle>
+          </AnimatePresence>
+        </SubtitleContainer>
+        <Description>
+          I design and develop services for customers of all sizes,
+          specializing in creating stylish, modern websites, web services and
+          online stores.
+        </Description>
+        <PrimaryButton href="#projects">View My Work</PrimaryButton>
+        <SocialLinks>
+          <SocialIcon href="https://github.com/satishverma2004" target="_blank" rel="noopener noreferrer"><FaGithub /></SocialIcon>
+          <SocialIcon href="https://linkedin.com/in/satish-kumar-verma-9526b3294" target="_blank" rel="noopener noreferrer"><FaLinkedin /></SocialIcon>
+          <SocialIcon href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></SocialIcon>
+        </SocialLinks>
+      </Left>
+      <Right>
+        <Canvas>
+          <OrbitControls enableZoom={false} autoRotate />
+          <ambientLight intensity={1} />
+          <directionalLight position={[3, 2, 1]} />
+          <Sphere args={[1, 100, 200]} scale={2.4}>
+            <MeshDistortMaterial
+              color="#58A6FF"
+              attach="material"
+              distort={0.5}
+              speed={2}
+            />
+          </Sphere>
+        </Canvas>
+      </Right>
     </HeroContainer>
   );
 }

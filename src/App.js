@@ -1,4 +1,5 @@
 import styled, { ThemeProvider } from 'styled-components';
+import { motion } from 'framer-motion';
 import { theme } from './theme';
 import GlobalStyle from './GlobalStyles';
 import Navbar from "./components/Navbar";
@@ -9,7 +10,7 @@ import Skills from "./sections/Skills";
 import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
 
-const AppContainer = styled.div`
+const AppContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +29,11 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Navbar />
-      <AppContainer>
+      <AppContainer
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
         <Hero id="hero" />
         <About id="about" />
         <Skills id="skills" />
