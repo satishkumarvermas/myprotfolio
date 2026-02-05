@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaGithub, FaLinkedin, FaTwitter, FaArrowUp } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaArrowUp, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
 const FooterContainer = styled.footer`
   padding: 3rem 5%;
@@ -31,6 +31,21 @@ const SocialIcon = styled.a`
 const CopyrightText = styled.p`
   color: ${({ theme }) => theme.colors.textSecondary};
   font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+`;
+
+const PoweredBy = styled.div`
+  font-size: 0.9rem;
+  color: ${({ theme }) => theme.colors.textSecondary};
+  
+  a {
+    color: ${({ theme }) => theme.colors.accent};
+    text-decoration: none;
+    margin: 0 0.5rem;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 const BackToTopButton = styled.button`
@@ -71,8 +86,17 @@ function Footer() {
         <SocialIcon href="https://github.com/satishverma2004" target="_blank" rel="noopener noreferrer"><FaGithub /></SocialIcon>
         <SocialIcon href="https://linkedin.com/in/satish-kumar-verma-9526b3294" target="_blank" rel="noopener noreferrer"><FaLinkedin /></SocialIcon>
         <SocialIcon href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></SocialIcon>
+        <SocialIcon href="https://www.instagram.com/mr_sillent.killer/" target="_blank" rel="noopener noreferrer"><FaInstagram /></SocialIcon>
+        <SocialIcon href="https://wa.me/qr/DJXVXEO2XEWSF1" target="_blank" rel="noopener noreferrer"><FaWhatsapp /></SocialIcon>
       </SocialLinks>
       <CopyrightText>© {new Date().getFullYear()} Satish Kumar Verma. All Rights Reserved.</CopyrightText>
+      <PoweredBy>
+        Powered by
+        <a href="https://react.dev/" target="_blank" rel="noopener noreferrer">React</a>,
+        <a href="https://styled-components.com/" target="_blank" rel="noopener noreferrer">Styled Components</a>,
+        <a href="https://www.framer.com/motion/" target="_blank" rel="noopener noreferrer">Framer Motion</a> &
+        <a href="https://docs.pmnd.rs/react-three-fiber/getting-started/introduction" target="_blank" rel="noopener noreferrer">React Three Fiber</a>
+      </PoweredBy>
       <BackToTopButton onClick={scrollToTop} title="Back to Top">
         <FaArrowUp />
       </BackToTopButton>

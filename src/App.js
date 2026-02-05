@@ -9,6 +9,7 @@ import About from "./sections/About";
 import Skills from "./sections/Skills";
 import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
+import ParticlesComponent from './components/Particles';
 
 const AppContainer = styled(motion.div)`
   display: flex;
@@ -16,6 +17,8 @@ const AppContainer = styled(motion.div)`
   align-items: center;
   width: 100%;
   padding: 0 5%;
+  position: relative;
+  z-index: 1;
 
   & > section {
     width: 100%;
@@ -28,6 +31,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+      <ParticlesComponent />
       <Navbar />
       <AppContainer
         initial={{ opacity: 0 }}

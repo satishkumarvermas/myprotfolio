@@ -1,12 +1,12 @@
 export const theme = {
   colors: {
-    primary: '#0D1117',
-    secondary: '#161B22',
-    accent: '#58A6FF',
-    secondaryAccent: '#1F6FEB',
-    text: '#C9D1D9',
-    textSecondary: '#8B949E',
-    gradient: 'linear-gradient(270deg, #0D1117, #161B22)',
+    primary: '#1A1A2E',
+    secondary: '#16213E',
+    accent: '#00F5C4',
+    secondaryAccent: '#E94560',
+    text: '#EAEAEA',
+    textSecondary: '#A9A9A9',
+    gradient: 'linear-gradient(270deg, #16213E, #1A1A2E)',
   },
   fonts: {
     main: "'Poppins', sans-serif",
@@ -21,7 +21,7 @@ export const theme = {
   },
   styles: {
     glassEffect: `
-      background: rgba(22, 27, 34, 0.8);
+      background: rgba(22, 33, 62, 0.8);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);

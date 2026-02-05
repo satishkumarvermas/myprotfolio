@@ -69,7 +69,7 @@ function About({ id }) {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.8 }}
         >
-          <Image src="https://picsum.photos/seed/picsum/400/400" alt="Satish Kumar Verma" />
+          <Image src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Coding on a laptop" />
         </ImageContainer>
         <TextContainer
           initial={{ opacity: 0, x: 100 }}

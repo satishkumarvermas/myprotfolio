@@ -9,7 +9,7 @@ const projects = [
     title: "CipherHub",
     description: "A web app for encryption & decryption using various ciphers, including quantum concepts.",
     tags: ["React", "Node.js", "Cryptography", "Quantum"],
-    image: "https://picsum.photos/seed/project1/400/300",
+    image: "https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     sourceCode: "https://github.com/satishkumarvermas/CIPHERHUB",
     liveDemo: ""
   },
@@ -110,6 +110,7 @@ const ProjectLinks = styled.div`
   display: flex;
   gap: 1rem;
   margin-top: auto;
+  align-items: center;
 `;
 
 const ProjectLink = styled.a`

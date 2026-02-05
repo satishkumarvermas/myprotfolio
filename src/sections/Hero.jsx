@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import Scene from '../components/Scene';
+import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
 const HeroContainer = styled.section`
   display: flex;
@@ -92,13 +91,13 @@ const PrimaryButton = styled(motion.a)`
   background: ${({ theme }) => theme.colors.accent};
   color: ${({ theme }) => theme.colors.primary};
   border: 1px solid ${({ theme }) => theme.colors.accent};
-  box-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+  box-shadow: 0 0 20px rgba(0, 245, 196, 0.5);
   display: inline-block;
   width: fit-content;
 
   &:hover {
     transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 0 30px rgba(88, 166, 255, 0.8);
+    box-shadow: 0 0 30px rgba(0, 245, 196, 0.8);
   }
 `;
 
@@ -159,22 +158,12 @@ function Hero({ id }) {
           <SocialIcon href="https://github.com/satishverma2004" target="_blank" rel="noopener noreferrer"><FaGithub /></SocialIcon>
           <SocialIcon href="https://linkedin.com/in/satish-kumar-verma-9526b3294" target="_blank" rel="noopener noreferrer"><FaLinkedin /></SocialIcon>
           <SocialIcon href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></SocialIcon>
+          <SocialIcon href="https://www.instagram.com/mr_sillent.killer/" target="_blank" rel="noopener noreferrer"><FaInstagram /></SocialIcon>
+          <SocialIcon href="https://wa.me/qr/DJXVXEO2XEWSF1" target="_blank" rel="noopener noreferrer"><FaWhatsapp /></SocialIcon>
         </SocialLinks>
       </Left>
       <Right>
-        <Canvas>
-          <OrbitControls enableZoom={false} autoRotate />
-          <ambientLight intensity={1} />
-          <directionalLight position={[3, 2, 1]} />
-          <Sphere args={[1, 100, 200]} scale={2.4}>
-            <MeshDistortMaterial
-              color="#58A6FF"
-              attach="material"
-              distort={0.5}
-              speed={2}
-            />
-          </Sphere>
-        </Canvas>
+        <Scene />
       </Right>
     </HeroContainer>
   );

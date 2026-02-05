@@ -12,30 +12,30 @@ const skillCategories = [
   {
     title: 'Frontend',
     skills: [
-      { name: 'React', icon: <FaReact /> },
-      { name: 'HTML5', icon: <FaHtml5 /> },
-      { name: 'CSS3', icon: <FaCss3Alt /> },
-      { name: 'JavaScript', icon: <FaJsSquare /> },
-      { name: 'Bootstrap', icon: <FaBootstrap /> },
-      { name: 'Styled Components', icon: <SiStyledcomponents /> },
-      { name: 'Framer Motion', icon: <SiFramer /> },
+      { name: 'React', icon: <FaReact />, docUrl: 'https://www.w3schools.com/react/' },
+      { name: 'HTML5', icon: <FaHtml5 />, docUrl: 'https://www.w3schools.com/html/' },
+      { name: 'CSS3', icon: <FaCss3Alt />, docUrl: 'https://www.w3schools.com/css/' },
+      { name: 'JavaScript', icon: <FaJsSquare />, docUrl: 'https://www.w3schools.com/js/' },
+      { name: 'Bootstrap', icon: <FaBootstrap />, docUrl: 'https://www.w3schools.com/bootstrap/' },
+      { name: 'Styled Components', icon: <SiStyledcomponents />, docUrl: 'https://www.freecodecamp.org/news/styled-components-tutorial-for-beginners/' },
+      { name: 'Framer Motion', icon: <SiFramer />, docUrl: 'https://www.freecodecamp.org/news/framer-motion-tutorial-for-beginners/' },
     ]
   },
   {
     title: 'Backend',
     skills: [
-      { name: 'Java', icon: <FaJava /> },
-      { name: 'Spring Boot', icon: <SiSpringboot /> },
-      { name: 'MySQL', icon: <SiMysql /> },
-      { name: 'PostgreSQL', icon: <SiPostgresql /> },
+      { name: 'Java', icon: <FaJava />, docUrl: 'https://www.w3schools.com/java/' },
+      { name: 'Spring Boot', icon: <SiSpringboot />, docUrl: 'https://www.freecodecamp.org/news/spring-boot-tutorial-for-beginners/' },
+      { name: 'MySQL', icon: <SiMysql />, docUrl: 'https://www.w3schools.com/sql/' },
+      { name: 'PostgreSQL', icon: <SiPostgresql />, docUrl: 'https://www.w3schools.com/sql/' },
     ]
   },
   {
     title: 'Tools & Other',
     skills: [
-      { name: 'Git', icon: <FaGitAlt /> },
-      { name: 'GitHub', icon: <FaGithub /> },
-      { name: 'Figma', icon: <FaFigma /> },
+      { name: 'Git', icon: <FaGitAlt />, docUrl: 'https://www.w3schools.com/git/' },
+      { name: 'GitHub', icon: <FaGithub />, docUrl: 'https://docs.github.com/en/get-started' },
+      { name: 'Figma', icon: <FaFigma />, docUrl: 'https://www.figma.com/learn/' },
     ]
   }
 ];
@@ -74,7 +74,11 @@ const SkillsGrid = styled.div`
   gap: 1.5rem;
 `;
 
-const SkillCard = styled(motion.div)`
+const SkillCardLink = styled(motion.a)`
+  text-decoration: none;
+`;
+
+const SkillCard = styled.div`
   ${({ theme }) => theme.styles.flexCenter};
   flex-direction: column;
   gap: 0.75rem;
@@ -84,6 +88,7 @@ const SkillCard = styled(motion.div)`
   border-radius: 15px;
   text-align: center;
   transition: all 0.3s ease;
+  height: 100%;
 
   &:hover {
     transform: translateY(-5px);
@@ -117,17 +122,22 @@ function Skills({ id }) {
             <CategoryTitle>{category.title}</CategoryTitle>
             <SkillsGrid>
               {category.skills.map((skill, i) => (
-                <SkillCard
+                <SkillCardLink
                   key={i}
+                  href={skill.docUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   variants={cardVariants}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                 >
-                  <SkillIcon>{skill.icon}</SkillIcon>
-                  <SkillName>{skill.name}</SkillName>
-                </SkillCard>
+                  <SkillCard>
+                    <SkillIcon>{skill.icon}</SkillIcon>
+                    <SkillName>{skill.name}</SkillName>
+                  </SkillCard>
+                </SkillCardLink>
               ))}
             </SkillsGrid>
           </Category>
