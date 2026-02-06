@@ -194,15 +194,7 @@ const TextContainer = styled(motion.div)`
   }
 `;
 
-const AboutTitle = styled.h1`
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  color: ${({ theme }) => theme.colors.text};
 
-  @media (max-width: 480px) {
-    font-size: 2rem;
-  }
-`;
 
 const AboutText = styled.p`
   font-size: 1.1rem;
