@@ -1,16 +1,7 @@
-export const theme = {
-  colors: {
-    primary: '#0D1117',
-    secondary: '#161B22',
-    accent: '#58A6FF',
-    secondaryAccent: '#1F6FEB',
-    text: '#C9D1D9',
-    textSecondary: '#8B949E',
-    gradient: 'linear-gradient(270deg, #0D1117, #161B22)',
-  },
+export const baseTheme = {
   fonts: {
-    main: "'Poppins', sans-serif",
-    heading: "'Montserrat', sans-serif",
+    main: "'Inter', sans-serif",
+    heading: "'Gendy', sans-serif",
   },
   fontSizes: {
     small: '0.875rem',
@@ -21,17 +12,30 @@ export const theme = {
   },
   styles: {
     glassEffect: `
-      background: rgba(22, 27, 34, 0.8);
+      background: rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 15px;
     `,
-    boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+    boxShadow: '0 4px 30px rgba(255, 255, 255, 0.1)',
     flexCenter: `
       display: flex;
       justify-content: center;
       align-items: center;
     `,
   }
+};
+
+export const darkTheme = {
+  colors: {
+    primary: '#212529', // Dark Gray (formerly text)
+    secondary: '#343A40', // Even Darker Gray
+    accent: '#63B3ED', // Lighter Blue (formerly secondaryAccent)
+    secondaryAccent: '#007BFF', // Vibrant Blue (formerly accent)
+    text: '#F8F9FA', // Light Gray (formerly primary)
+    textSecondary: '#CED4DA', // Lighter Muted Gray
+    gradient: 'linear-gradient(270deg, #212529, #343A40)',
+  },
+  ...baseTheme,
 };

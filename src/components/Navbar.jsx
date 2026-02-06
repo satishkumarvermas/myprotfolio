@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
+
 const Nav = styled(motion.nav)`
   position: fixed;
   top: 0;
@@ -14,16 +15,17 @@ const Nav = styled(motion.nav)`
   padding: 1rem 5%;
   height: 70px;
   z-index: 1000;
-  ${({ theme, isScrolled }) => isScrolled && theme.styles.glassEffect};
+  ${({ theme, $isScrolled }) => $isScrolled && theme.styles.glassEffect};
   transition: all 0.3s ease-in-out;
 `;
 
-const Logo = styled.h2`
+const LogoLink = styled.a`
   font-size: 1.8rem;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.text};
   cursor: pointer;
   z-index: 1001;
+  text-decoration: none;
 `;
 
 const NavLinks = styled.ul`
@@ -40,12 +42,15 @@ const NavLink = styled.li`
   margin: 0 1.5rem;
   font-size: 1rem;
   font-weight: 500;
-  a {
-    color: ${({ theme }) => theme.colors.textSecondary};
-    transition: color 0.3s;
-    &:hover {
-      color: ${({ theme }) => theme.colors.accent};
-    }
+`;
+
+const StyledLink = styled.a`
+  color: ${({ theme }) => theme.colors.textSecondary};
+  transition: color 0.3s;
+  text-decoration: none;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.accent};
   }
 `;
 
@@ -58,6 +63,7 @@ const HireButton = styled(motion.a)`
   font-weight: 600;
   transition: all 0.3s;
   z-index: 1001;
+  text-decoration: none;
 
   &:hover {
     background: ${({ theme }) => theme.colors.accent};
@@ -98,12 +104,15 @@ const MobileNavLink = styled(motion.li)`
   margin: 2rem 0;
   font-size: 2rem;
   font-weight: 600;
-  a {
-    color: ${({ theme }) => theme.colors.text};
-    transition: color 0.3s;
-    &:hover {
-      color: ${({ theme }) => theme.colors.accent};
-    }
+`;
+
+const MobileStyledLink = styled.a`
+  color: ${({ theme }) => theme.colors.text};
+  transition: color 0.3s;
+  text-decoration: none;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.accent};
   }
 `;
 
@@ -119,14 +128,21 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setIsMobileMenuOpen(false);
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    closeMobileMenu();
   };
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  }
 
   const menuVariants = {
     hidden: { opacity: 0, y: "-100%" },
@@ -140,15 +156,15 @@ function Navbar() {
 
   return (
     <>
-      <Nav isScrolled={isScrolled}>
-        <Logo onClick={scrollToTop} title="Satish Kumar Verma">SKV</Logo>
+      <Nav $isScrolled={isScrolled}>
+        <LogoLink href="#home" onClick={() => scrollToSection('home')} title="Satish Kumar Verma">SKV</LogoLink>
         <NavLinks>
-          <NavLink><a href="#about">About</a></NavLink>
-          <NavLink><a href="#skills">Skills</a></NavLink>
-          <NavLink><a href="#projects">Projects</a></NavLink>
-          <NavLink><a href="#contact">Contact</a></NavLink>
+          <NavLink><StyledLink href="#about" onClick={() => scrollToSection('about')}>About</StyledLink></NavLink>
+          <NavLink><StyledLink href="#skills" onClick={() => scrollToSection('skills')}>Skills</StyledLink></NavLink>
+          <NavLink><StyledLink href="#projects" onClick={() => scrollToSection('projects')}>Projects</StyledLink></NavLink>
+          <NavLink><StyledLink href="#contact" onClick={() => scrollToSection('contact')}>Contact</StyledLink></NavLink>
         </NavLinks>
-        <HireButton href="#contact">Hire Me</HireButton>
+        <HireButton href="#contact" onClick={() => scrollToSection('contact')}>Hire Me</HireButton>
         <MobileNavIcon onClick={toggleMobileMenu}>
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </MobileNavIcon>
@@ -161,10 +177,10 @@ function Navbar() {
             animate="visible"
             exit="hidden"
           >
-            <MobileNavLink variants={linkVariants}><a href="#about" onClick={toggleMobileMenu}>About</a></MobileNavLink>
-            <MobileNavLink variants={linkVariants}><a href="#skills" onClick={toggleMobileMenu}>Skills</a></MobileNavLink>
-            <MobileNavLink variants={linkVariants}><a href="#projects" onClick={toggleMobileMenu}>Projects</a></MobileNavLink>
-            <MobileNavLink variants={linkVariants}><a href="#contact" onClick={toggleMobileMenu}>Contact</a></MobileNavLink>
+            <MobileNavLink variants={linkVariants}><MobileStyledLink href="#about" onClick={() => scrollToSection('about')}>About</MobileStyledLink></MobileNavLink>
+            <MobileNavLink variants={linkVariants}><MobileStyledLink href="#skills" onClick={() => scrollToSection('skills')}>Skills</MobileStyledLink></MobileNavLink>
+            <MobileNavLink variants={linkVariants}><MobileStyledLink href="#projects" onClick={() => scrollToSection('projects')}>Projects</MobileStyledLink></MobileNavLink>
+            <MobileNavLink variants={linkVariants}><MobileStyledLink href="#contact" onClick={() => scrollToSection('contact')}>Contact</MobileStyledLink></MobileNavLink>
           </MobileNavMenu>
         )}
       </AnimatePresence>

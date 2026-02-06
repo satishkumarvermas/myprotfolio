@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const SectionContainer = styled(motion.section)`
-  padding: 5rem;
+  padding: 2rem;
   ${({ theme }) => theme.styles.glassEffect};
 
   @media (max-width: 768px) {
-    padding: 3rem;
+    padding: 1.5rem;
   }
 `;
 
