@@ -16,9 +16,11 @@
     "react-dom": "^19.2.4",
     "react-icons": "^5.5.0",
     "react-scripts": "5.0.1",
+    "react-tsparticles": "^2.12.2",
     "styled-components": "^6.3.8",
     "tailwindcss": "^4.1.18",
     "three": "^0.182.0",
+    "tsparticles": "^3.9.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
