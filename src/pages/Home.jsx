@@ -3,8 +3,8 @@ import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Sphere, MeshDistortMaterial, Torus } from '@react-three/drei';
-import { FaGithub, FaLinkedin, FaTwitter, FaReact, FaHtml5, FaCss3Alt, FaJsSquare, FaBootstrap, FaJava, FaFigma, FaExternalLinkAlt, FaGitAlt } from 'react-icons/fa';
-import { SiSpringboot, SiMysql, SiPostgresql, SiStyledcomponents, SiFramer } from 'react-icons/si';
+import { FaGithub, FaLinkedin, FaTwitter, FaReact, FaHtml5, FaCss3Alt, FaJsSquare, FaBootstrap, FaJava, FaExternalLinkAlt, FaGitAlt, FaCode, FaAtom, FaFileAlt, FaRobot, FaLightbulb } from 'react-icons/fa';
+import { SiSpringboot, SiMysql, SiPostgresql, SiStyledcomponents, SiFramer, SiLeetcode, SiVercel, SiGoogle } from 'react-icons/si';
 import Section from '../components/Section';
 import emailjs from 'emailjs-com';
 
@@ -258,6 +258,7 @@ const skillCategories = [
       { name: 'Java', icon: <FaJava /> },
       { name: 'Spring Boot', icon: <SiSpringboot /> },
       { name: 'MySQL', icon: <SiMysql /> },
+      { name: 'Object-Oriented Programming (OOP)', icon: <FaCode /> },
       { name: 'PostgreSQL', icon: <SiPostgresql /> },
     ]
   },
@@ -266,7 +267,21 @@ const skillCategories = [
     skills: [
       { name: 'Git', icon: <FaGitAlt /> },
       { name: 'GitHub', icon: <FaGithub /> },
-      { name: 'Figma', icon: <FaFigma /> },
+      { name: 'IBM Quantum Simulator', icon: <FaAtom /> },
+      { name: 'Vercel', icon: <SiVercel /> },
+      { name: 'Microsoft Word', icon: <FaFileAlt /> },
+      { name: 'Microsoft Excel', icon: <FaFileAlt /> },
+      { name: 'Microsoft PowerPoint', icon: <FaFileAlt /> },
+      { name: 'Gemini CLI', icon: <SiGoogle /> },
+      { name: 'Claude AI', icon: <FaRobot /> },
+      { name: 'Lovable AI', icon: <FaRobot /> },
+      { name: 'ChatGPT', icon: <FaRobot /> },
+    ]
+  },
+  {
+    title: 'Methodologies & Soft Skills',
+    skills: [
+      { name: 'Problem-Solving', icon: <FaLightbulb /> },
     ]
   }
 ];
@@ -656,8 +671,9 @@ function Home() {
           <PrimaryButton href="#projects">View My Work</PrimaryButton>
           <SocialLinks>
             <SocialIcon href="https://github.com/satishkumarvermas" target="_blank" rel="noopener noreferrer"><FaGithub /></SocialIcon>
-            <SocialIcon href="https://linkedin.com/in/satish-kumar-verma-9526b3294" target="_blank" rel="noopener noreferrer"><FaLinkedin /></SocialIcon>
-            <SocialIcon href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></SocialIcon>
+            <SocialIcon href="https://www.linkedin.com/in/satish-kumar-verma/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></SocialIcon>
+            <SocialIcon href="https://leetcode.com/u/SGR4PTFc1HL/" target="_blank" rel="noopener noreferrer"><SiLeetcode /></SocialIcon>
+            <SocialIcon href="https://x.com/SatishVerma2004" target="_blank" rel="noopener noreferrer"><FaTwitter /></SocialIcon>
           </SocialLinks>
         </Left>
         <Right>
@@ -700,7 +716,7 @@ function Home() {
               web experiences. I thrive on turning complex problems into simple,
               elegant solutions.
             </AboutText>
-            <OutlineButton href="/assets/SATISH_KR_VERMA_RESUME.pdf" download>
+            <OutlineButton href="/assets/SATISH_KUMAR_VERMA_CV.pdf" download>
               Download Resume
             </OutlineButton>
           </TextContainer>

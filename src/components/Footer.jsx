@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaGithub, FaLinkedin, FaTwitter, FaArrowUp, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
 
 const FooterContainer = styled.footer`
   padding: 3rem 5%;
@@ -88,9 +89,10 @@ function Footer() {
   return (
     <FooterContainer>
       <SocialLinks>
-        <SocialIcon href="https://github.com/satishverma2004" target="_blank" rel="noopener noreferrer"><FaGithub /></SocialIcon>
-        <SocialIcon href="https://linkedin.com/in/satish-kumar-verma-9526b3294" target="_blank" rel="noopener noreferrer"><FaLinkedin /></SocialIcon>
-        <SocialIcon href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></SocialIcon>
+        <SocialIcon href="https://github.com/satishkumarvermas" target="_blank" rel="noopener noreferrer"><FaGithub /></SocialIcon>
+        <SocialIcon href="https://www.linkedin.com/in/satish-kumar-verma/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></SocialIcon>
+        <SocialIcon href="https://leetcode.com/u/SGR4PTFc1HL/" target="_blank" rel="noopener noreferrer"><SiLeetcode /></SocialIcon>
+        <SocialIcon href="https://x.com/SatishVerma2004" target="_blank" rel="noopener noreferrer"><FaTwitter /></SocialIcon>
         <SocialIcon href="https://www.instagram.com/mr_sillent.killer/" target="_blank" rel="noopener noreferrer"><FaInstagram /></SocialIcon>
         <SocialIcon href="https://wa.me/qr/DJXVXEO2XEWSF1" target="_blank" rel="noopener noreferrer"><FaWhatsapp /></SocialIcon>
       </SocialLinks>
