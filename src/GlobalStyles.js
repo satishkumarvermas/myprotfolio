@@ -29,11 +29,16 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
     overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
   }
 
   html {
     overflow-x: hidden;
     scroll-behavior: smooth;
+    width: 100%;
+    height: 100%;
   }
 
   h1, h2, h3, h4, h5, h6 {

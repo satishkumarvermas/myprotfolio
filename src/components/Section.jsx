@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const SectionContainer = styled(motion.section)`
-  padding: 2rem;
+  padding: 5rem 2rem;
   ${({ theme }) => theme.styles.glassEffect};
+  width: 100%;
+  position: relative;
 
   @media (max-width: 768px) {
-    padding: 1.5rem;
+    padding: 3rem 1.5rem;
   }
 `;
 
@@ -18,15 +20,19 @@ const SectionTitle = styled.h2`
   text-align: center;
   color: ${({ theme }) => theme.colors.accent};
   text-shadow: 0 0 10px ${({ theme }) => theme.colors.accent};
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const sectionVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0 },
   visible: { 
     opacity: 1, 
-    y: 0,
     transition: {
-      duration: 0.8,
+      duration: 0.6,
       ease: 'easeOut'
     }
   }

@@ -25,48 +25,46 @@ const HeroContainer = styled(motion.section)`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Make it full viewport height */
-  padding-top: 80px; /* Account for navbar height */
-  padding-bottom: 50px; /* Add some padding at the bottom */
+  min-height: 100vh;
+  padding-top: 80px;
+  padding-bottom: 50px;
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  padding-left: 2rem; /* Keep existing horizontal padding */
-  padding-right: 2rem; /* Keep existing horizontal padding */
-  overflow: hidden;
+  padding-left: 2rem;
+  padding-right: 2rem;
 
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
-    padding-top: 80px; /* Adjust for mobile too */
-    padding-bottom: 30px;
+    padding-top: 100px;
+    padding-bottom: 40px;
     min-height: auto;
+    gap: 2rem;
   }
 `;
 
 const Left = styled.div`
-  flex: 2;
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  z-index: 1;
+  z-index: 2;
 
   @media (max-width: 768px) {
-    flex: 1;
     align-items: center;
   }
 `;
 
 const Right = styled.div`
-  flex: 3;
+  flex: 1;
   position: relative;
-  height: 100%;
+  height: 400px;
   width: 100%;
+  z-index: 1;
 
   @media (max-width: 768px) {
-    flex: 1;
-    width: 100%;
-    height: 300px; /* Give a fixed height for the canvas on mobile */
+    height: 300px;
   }
 `;
 
@@ -76,7 +74,7 @@ const Title = styled(motion.h1)`
   line-height: 1.1;
 
   @media (max-width: 768px) {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 `;
 
@@ -84,6 +82,10 @@ const SubtitleContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 0.75rem;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const Line = styled.div`
@@ -96,6 +98,10 @@ const AnimatedSubtitle = styled(motion.h2)`
   font-size: 1.75rem;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.accent};
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
 `;
 
 const Description = styled(motion.p)`
@@ -105,6 +111,7 @@ const Description = styled(motion.p)`
 
   @media (max-width: 768px) {
     max-width: 100%;
+    font-size: 1rem;
   }
 `;
 
@@ -134,6 +141,10 @@ const SocialLinks = styled(motion.div)`
   display: flex;
   gap: 1.5rem;
   margin-top: 1rem;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const SocialIcon = styled.a`
@@ -156,7 +167,6 @@ const AboutContainer = styled.div`
   margin: 0 auto;
   padding: 0 2rem;
   position: relative;
-  overflow: hidden;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -171,6 +181,7 @@ const AboutContainer = styled.div`
 const ImageContainer = styled(motion.div)`
   flex: 1;
   ${({ theme }) => theme.styles.flexCenter};
+  width: 100%;
 `;
 
 const Image = styled.img`
@@ -189,9 +200,10 @@ const Image = styled.img`
 
 const TextContainer = styled(motion.div)`
   flex: 2;
-  padding: 2rem;
+  padding: 2.5rem;
   ${({ theme }) => theme.styles.glassEffect};
   ${({ theme }) => theme.styles.boxShadow};
+  width: 100%;
 
   @media (max-width: 480px) {
     padding: 1.5rem;
@@ -232,7 +244,7 @@ const OutlineButton = styled.a`
 const SkillsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 4rem;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
@@ -240,7 +252,7 @@ const SkillsContainer = styled.div`
 
   @media (max-width: 480px) {
     padding: 0 1rem;
-    gap: 2rem;
+    gap: 3rem;
   }
 `;
 
@@ -378,6 +390,7 @@ const ProjectsGrid = styled.div`
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
     padding: 0 1rem;
+    gap: 1.5rem;
   }
 `;
 
@@ -411,15 +424,17 @@ const projects = [
 const ProjectCard = styled(motion.div)`
   background-color: ${({ theme }) => theme.colors.secondary};
   border: 1px solid ${({ theme }) => theme.colors.secondary};
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
+  height: 100%;
 
   &:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 30px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+    border-color: ${({ theme }) => theme.colors.accent};
   }
 `;
 
@@ -459,7 +474,7 @@ const ProjectDescription = styled.p`
   line-height: 1.6;
   color: ${({ theme }) => theme.colors.textSecondary};
   flex-grow: 1;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 `;
 
 const TagsContainer = styled.div`
@@ -496,21 +511,23 @@ const ProjectLink = styled.a`
 `;
 
 const projectCardVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 }
 };
 
 // Contact Section Styles
 const ContactContainer = styled.div`
   display: flex;
-  gap: 3rem;
-  align-items: center;
+  gap: 4rem;
+  align-items: flex-start;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
 
   @media (max-width: 768px) {
     flex-direction: column;
+    align-items: center;
   }
 
   @media (max-width: 480px) {
@@ -523,16 +540,17 @@ const ContactLeft = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  height: 500px;
+  height: 400px;
+  width: 100%;
 
   @media (max-width: 768px) {
     height: 300px;
-    width: 100%;
   }
 `;
 
 const ContactRight = styled.div`
   flex: 1;
+  width: 100%;
 `;
 
 const FormContainer = styled(motion.form)`
@@ -543,6 +561,7 @@ const FormContainer = styled(motion.form)`
   ${({ theme }) => theme.styles.glassEffect};
   ${({ theme }) => theme.styles.boxShadow};
   border-radius: 15px;
+  width: 100%;
 
   @media (max-width: 480px) {
     padding: 1.5rem;
@@ -553,16 +572,17 @@ const Input = styled.input`
   width: 100%;
   padding: 1rem;
   background: ${({ theme }) => theme.colors.secondary};
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   color: ${({ theme }) => theme.colors.text};
   font-family: inherit;
   font-size: 1rem;
-  transition: border-color 0.3s;
+  transition: all 0.3s;
 
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.colors.accent};
+    background: rgba(255, 255, 255, 0.05);
   }
 `;
 
@@ -570,18 +590,19 @@ const TextArea = styled.textarea`
   width: 100%;
   padding: 1rem;
   background: ${({ theme }) => theme.colors.secondary};
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   color: ${({ theme }) => theme.colors.text};
   font-family: inherit;
   font-size: 1rem;
-  min-height: 120px;
+  min-height: 150px;
   resize: vertical;
-  transition: border-color 0.3s;
+  transition: all 0.3s;
 
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.colors.accent};
+    background: rgba(255, 255, 255, 0.05);
   }
 `;
 
@@ -595,10 +616,15 @@ const SubmitButton = styled(motion.button)`
   color: ${({ theme }) => theme.colors.secondary};
   border: none;
   font-size: 1rem;
+  width: fit-content;
 
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;
 
