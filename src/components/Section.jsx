@@ -39,7 +39,7 @@ const Section = ({ id, title, children }) => {
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.1 }}
     >
       <SectionTitle>{title}</SectionTitle>
       {children}

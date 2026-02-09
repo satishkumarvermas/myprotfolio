@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Sphere, MeshDistortMaterial, Torus } from '@react-three/drei';
-import { FaGithub, FaLinkedin, FaTwitter, FaReact, FaHtml5, FaCss3Alt, FaJsSquare, FaBootstrap, FaJava, FaExternalLinkAlt, FaGitAlt, FaCode, FaAtom, FaFileAlt, FaRobot, FaLightbulb } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaReact, FaHtml5, FaCss3Alt, FaJsSquare, FaBootstrap, FaJava, FaExternalLinkAlt, FaGitAlt, FaCode, FaAtom, FaFileAlt, FaRobot, FaLightbulb, FaInstagram, FaWhatsapp, FaUsers, FaRunning, FaSyncAlt } from 'react-icons/fa';
 import { SiSpringboot, SiMysql, SiPostgresql, SiStyledcomponents, SiFramer, SiLeetcode, SiVercel, SiGoogle } from 'react-icons/si';
 import Section from '../components/Section';
 import emailjs from 'emailjs-com';
@@ -243,45 +243,48 @@ const skillCategories = [
   {
     title: 'Frontend',
     skills: [
-      { name: 'React', icon: <FaReact /> },
-      { name: 'HTML5', icon: <FaHtml5 /> },
-      { name: 'CSS3', icon: <FaCss3Alt /> },
-      { name: 'JavaScript', icon: <FaJsSquare /> },
-      { name: 'Bootstrap', icon: <FaBootstrap /> },
-      { name: 'Styled Components', icon: <SiStyledcomponents /> },
-      { name: 'Framer Motion', icon: <SiFramer /> },
+      { name: 'React', icon: <FaReact />, link: 'https://react.dev/' },
+      { name: 'HTML5', icon: <FaHtml5 />, link: 'https://www.w3schools.com/html/' },
+      { name: 'CSS3', icon: <FaCss3Alt />, link: 'https://www.w3schools.com/css/' },
+      { name: 'JavaScript', icon: <FaJsSquare />, link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+      { name: 'Bootstrap', icon: <FaBootstrap />, link: 'https://getbootstrap.com/' },
+      { name: 'Styled Components', icon: <SiStyledcomponents />, link: 'https://styled-components.com/' },
+      { name: 'Framer Motion', icon: <SiFramer />, link: 'https://www.framer.com/motion/' },
     ]
   },
   {
     title: 'Backend',
     skills: [
-      { name: 'Java', icon: <FaJava /> },
-      { name: 'Spring Boot', icon: <SiSpringboot /> },
-      { name: 'MySQL', icon: <SiMysql /> },
-      { name: 'Object-Oriented Programming (OOP)', icon: <FaCode /> },
-      { name: 'PostgreSQL', icon: <SiPostgresql /> },
+      { name: 'Java', icon: <FaJava />, link: 'https://dev.java/' },
+      { name: 'Spring Boot', icon: <SiSpringboot />, link: 'https://spring.io/projects/spring-boot' },
+      { name: 'MySQL', icon: <SiMysql />, link: 'https://www.mysql.com/' },
+      { name: 'Object-Oriented Programming (OOP)', icon: <FaCode />, link: 'https://www.geeksforgeeks.org/object-oriented-programming-in-cpp/' },
+      { name: 'PostgreSQL', icon: <SiPostgresql />, link: 'https://www.postgresql.org/' },
     ]
   },
   {
     title: 'Tools & Other',
     skills: [
-      { name: 'Git', icon: <FaGitAlt /> },
-      { name: 'GitHub', icon: <FaGithub /> },
-      { name: 'IBM Quantum Simulator', icon: <FaAtom /> },
-      { name: 'Vercel', icon: <SiVercel /> },
-      { name: 'Microsoft Word', icon: <FaFileAlt /> },
-      { name: 'Microsoft Excel', icon: <FaFileAlt /> },
-      { name: 'Microsoft PowerPoint', icon: <FaFileAlt /> },
-      { name: 'Gemini CLI', icon: <SiGoogle /> },
-      { name: 'Claude AI', icon: <FaRobot /> },
-      { name: 'Lovable AI', icon: <FaRobot /> },
-      { name: 'ChatGPT', icon: <FaRobot /> },
+      { name: 'Git', icon: <FaGitAlt />, link: 'https://git-scm.com/' },
+      { name: 'GitHub', icon: <FaGithub />, link: 'https://github.com/' },
+      { name: 'IBM Quantum Simulator', icon: <FaAtom />, link: 'https://quantum-computing.ibm.com/' },
+      { name: 'Vercel', icon: <SiVercel />, link: 'https://vercel.com/' },
+      { name: 'Microsoft Word', icon: <FaFileAlt />, link: 'https://www.microsoft.com/en-us/microsoft-365/word' },
+      { name: 'Microsoft Excel', icon: <FaFileAlt />, link: 'https://www.microsoft.com/en-us/microsoft-365/excel' },
+      { name: 'Microsoft PowerPoint', icon: <FaFileAlt />, link: 'https://www.microsoft.com/en-us/microsoft-365/powerpoint' },
+      { name: 'Gemini CLI', icon: <SiGoogle />, link: 'https://ai.google.dev/' },
+      { name: 'Claude AI', icon: <FaRobot />, link: 'https://claude.ai/' },
+      { name: 'Lovable AI', icon: <FaRobot />, link: 'https://lovable.dev/' },
+      { name: 'ChatGPT', icon: <FaRobot />, link: 'https://chatgpt.com/' },
     ]
   },
   {
     title: 'Methodologies & Soft Skills',
     skills: [
-      { name: 'Problem-Solving', icon: <FaLightbulb /> },
+      { name: 'Good problem-solving and logical skills', icon: <FaLightbulb /> },
+      { name: 'Collaborative Team Member', icon: <FaUsers /> },
+      { name: 'Quick Adoption', icon: <FaRunning /> },
+      { name: 'Flexibility', icon: <FaSyncAlt /> },
     ]
   }
 ];
@@ -328,11 +331,17 @@ const SkillCard = styled(motion.div)`
   border-radius: 8px;
   text-align: center;
   transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: default;
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
-  }
+  ${props => props.as === 'a' && `
+    cursor: pointer;
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+      border-color: ${props.theme.colors.accent};
+    }
+  `}
 `;
 
 const SkillIcon = styled.div`
@@ -672,8 +681,10 @@ function Home() {
           <SocialLinks>
             <SocialIcon href="https://github.com/satishkumarvermas" target="_blank" rel="noopener noreferrer"><FaGithub /></SocialIcon>
             <SocialIcon href="https://www.linkedin.com/in/satish-kumar-verma/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></SocialIcon>
-            <SocialIcon href="https://leetcode.com/u/SGR4PTFc1HL/" target="_blank" rel="noopener noreferrer"><SiLeetcode /></SocialIcon>
+            <SocialIcon href="https://leetcode.com/u/SGR4PLFc1H/" target="_blank" rel="noopener noreferrer"><SiLeetcode /></SocialIcon>
             <SocialIcon href="https://x.com/SatishVerma2004" target="_blank" rel="noopener noreferrer"><FaTwitter /></SocialIcon>
+            <SocialIcon href="https://www.instagram.com/mr_sillent.killer/" target="_blank" rel="noopener noreferrer"><FaInstagram /></SocialIcon>
+            <SocialIcon href="https://wa.me/qr/DJXVXEO2XEWSF1" target="_blank" rel="noopener noreferrer"><FaWhatsapp /></SocialIcon>
           </SocialLinks>
         </Left>
         <Right>
@@ -698,7 +709,7 @@ function Home() {
           <ImageContainer
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.5 }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8 }}
           >
             <Image src="https://picsum.photos/seed/picsum/400/400" alt="Satish Kumar Verma" />
@@ -706,7 +717,7 @@ function Home() {
           <TextContainer
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <AboutText>
@@ -735,8 +746,12 @@ function Home() {
                     variants={skillCardVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.1 }}
                     transition={{ duration: 0.5, delay: i * 0.1 }}
+                    as={skill.link ? 'a' : 'div'}
+                    href={skill.link}
+                    target={skill.link ? '_blank' : undefined}
+                    rel={skill.link ? 'noopener noreferrer' : undefined}
                   >
                     <SkillIcon>{skill.icon}</SkillIcon>
                     <SkillName>{skill.name}</SkillName>
@@ -756,7 +771,7 @@ function Home() {
               variants={projectCardVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <ProjectImageContainer>
@@ -798,7 +813,7 @@ function Home() {
               onSubmit={sendEmail}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8 }}
             >
               <Input type="text" name="from_name" placeholder="Your Name" required />

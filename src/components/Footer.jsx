@@ -91,7 +91,7 @@ function Footer() {
       <SocialLinks>
         <SocialIcon href="https://github.com/satishkumarvermas" target="_blank" rel="noopener noreferrer"><FaGithub /></SocialIcon>
         <SocialIcon href="https://www.linkedin.com/in/satish-kumar-verma/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></SocialIcon>
-        <SocialIcon href="https://leetcode.com/u/SGR4PTFc1HL/" target="_blank" rel="noopener noreferrer"><SiLeetcode /></SocialIcon>
+        <SocialIcon href="https://leetcode.com/u/SGR4PLFc1H/" target="_blank" rel="noopener noreferrer"><SiLeetcode /></SocialIcon>
         <SocialIcon href="https://x.com/SatishVerma2004" target="_blank" rel="noopener noreferrer"><FaTwitter /></SocialIcon>
         <SocialIcon href="https://www.instagram.com/mr_sillent.killer/" target="_blank" rel="noopener noreferrer"><FaInstagram /></SocialIcon>
         <SocialIcon href="https://wa.me/qr/DJXVXEO2XEWSF1" target="_blank" rel="noopener noreferrer"><FaWhatsapp /></SocialIcon>
