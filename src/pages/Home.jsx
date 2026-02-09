@@ -707,17 +707,11 @@ function Home() {
       <Section id="about" title="About Me">
         <AboutContainer>
           <ImageContainer
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8 }}
           >
             <Image src="https://picsum.photos/seed/picsum/400/400" alt="Satish Kumar Verma" />
           </ImageContainer>
           <TextContainer
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <AboutText>
@@ -743,10 +737,6 @@ function Home() {
                 {category.skills.map((skill, i) => (
                   <SkillCard
                     key={i}
-                    variants={skillCardVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.1 }}
                     transition={{ duration: 0.5, delay: i * 0.1 }}
                     as={skill.link ? 'a' : 'div'}
                     href={skill.link}
@@ -768,10 +758,6 @@ function Home() {
           {projects.map((project, i) => (
             <ProjectCard
               key={i}
-              variants={projectCardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <ProjectImageContainer>
@@ -811,9 +797,6 @@ function Home() {
           <ContactRight>
             <FormContainer 
               onSubmit={sendEmail}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8 }}
             >
               <Input type="text" name="from_name" placeholder="Your Name" required />
