@@ -33,12 +33,14 @@ const HeroContainer = styled(motion.section)`
   margin: 0 auto;
   padding-left: 2rem; /* Keep existing horizontal padding */
   padding-right: 2rem; /* Keep existing horizontal padding */
+  overflow: hidden;
 
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
     padding-top: 80px; /* Adjust for mobile too */
     padding-bottom: 30px;
+    min-height: auto;
   }
 `;
 
@@ -153,6 +155,8 @@ const AboutContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
+  overflow: hidden;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -232,6 +236,7 @@ const SkillsContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
 
   @media (max-width: 480px) {
     padding: 0 1rem;
@@ -368,6 +373,7 @@ const ProjectsGrid = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
 
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
@@ -707,11 +713,17 @@ function Home() {
       <Section id="about" title="About Me">
         <AboutContainer>
           <ImageContainer
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0 }}
             transition={{ duration: 0.8 }}
           >
             <Image src="https://picsum.photos/seed/picsum/400/400" alt="Satish Kumar Verma" />
           </ImageContainer>
           <TextContainer
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <AboutText>
@@ -737,6 +749,10 @@ function Home() {
                 {category.skills.map((skill, i) => (
                   <SkillCard
                     key={i}
+                    variants={skillCardVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0 }}
                     transition={{ duration: 0.5, delay: i * 0.1 }}
                     as={skill.link ? 'a' : 'div'}
                     href={skill.link}
@@ -758,6 +774,10 @@ function Home() {
           {projects.map((project, i) => (
             <ProjectCard
               key={i}
+              variants={projectCardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <ProjectImageContainer>
@@ -797,6 +817,9 @@ function Home() {
           <ContactRight>
             <FormContainer 
               onSubmit={sendEmail}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0 }}
               transition={{ duration: 0.8 }}
             >
               <Input type="text" name="from_name" placeholder="Your Name" required />

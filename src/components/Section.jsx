@@ -36,6 +36,10 @@ const Section = ({ id, title, children }) => {
   return (
     <SectionContainer
       id={id}
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0 }}
     >
       <SectionTitle>{title}</SectionTitle>
       {children}
